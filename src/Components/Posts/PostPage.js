@@ -34,34 +34,37 @@ const PostPage = () => {
 				setLikes(data[0].likes);
 				const dateTime = new Date(Date.parse(data[0].date));
 				setDate(time.format(dateTime));
-			}).then(() => {
-				fetch(`http://localhost:5000/comments/${title}/${author}`, {
+				fetch(`http://localhost:5000/comments/${data[0].title}/${data[0].author}`, {
 					method: "GET",
 					headers: {"Content-Type": "application/json"}
 				}).then(res => res.json())
 				.then(data => {
 					setComments(data);
 				});
+			}).then(() => {
+				
 			});
 		}
 	});
 
 	function submitComment(e) {
 		e.preventDefault();
-		const body = {
-			username: user,
-			post: title,
-			post_author: author,
-			body: comment
+		if (user !== undefined) {
+			const body = {
+				username: user,
+				post: title,
+				post_author: author,
+				body: comment
+			}
+			fetch('http://localhost:5000/comments/create', {
+				method: 'POST',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify(body)
+			});
+			setComments([...comments, body]);
+		} else {
+			console.log("Username is empty");
 		}
-		fetch('http://localhost:5000/comments/create', {
-			method: 'POST',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify(body)
-		}).then(res => res.json())
-		.then(data => {
-			setComments([...comments, data]);
-		});
 	}
 
 	function submitLike() {
@@ -69,10 +72,8 @@ const PostPage = () => {
 		fetch(`http://localhost:5000/posts/${author}/${title}/${amount}`, {
 			method: 'PUT',
 			headers: {'Content-Type': 'application/json'}
-		}).then(res => res.json())
-		.then(data => {
-			setLikes(amount);
-		})
+		});
+		setLikes(amount);
 	}
 
 	function submitDislike() {
@@ -80,26 +81,29 @@ const PostPage = () => {
 		fetch(`http://localhost:5000/posts/${author}/${title}/${amount}`, {
 			method: 'PUT',
 			headers: {'Content-Type': 'application/json'}
-		}).then(res => res.json())
-		.then(data => {
-			setLikes(amount);
-		})
+		});
+		setLikes(amount);
 	}
 	return (
-		<div>
-			<h4> Author: {author} </h4>
-			<h4> Title: {title} </h4>
-			<h4> Body: {body} </h4>
-			{comments.map(comment => (
-				<SingleComment key={comment.body + comment.username} data={comment} />))}
-			<h4> Likes: {likes} </h4>
-			<h4> { date } </h4>
-			<button onClick={submitLike}> Like </button>
-			<button onClick={submitDislike}> Dislike </button>
-			<input 
-				placeholder="New Comment" 
-				onChange={event => setComment(event.target.value)}/>
-			<button onClick={submitComment}> Submit </button>
+		<div className="background">
+			<div className="post-content">
+				<h4 className="post-title"> {title} </h4>
+				<h4 className="post-body"> {body} </h4>
+				<h4 className="post-author"> By: {author +" " + date} </h4>
+				<div className="like-box">
+					<a className="like" onClick={submitLike}> Like </a>
+					<h4 className="like-count"> {likes} </h4>
+					<a className="like" onClick={submitDislike}> Dislike </a>
+				</div>
+				<textarea
+					className="comment-input"
+					placeholder="Your opinion?" 
+					onChange={event => setComment(event.target.value)}/>
+				<button className="submit" onClick={submitComment}> Submit </button>
+				<hr className="line" />
+				{comments.map(comment => (
+					<SingleComment key={comment.body + comment.username} data={comment} />))}
+			</div>
 		</div>
 		);
 }

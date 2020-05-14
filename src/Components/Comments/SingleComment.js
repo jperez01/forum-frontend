@@ -11,9 +11,9 @@ const SingleComment = (props) => {
 
 
 	return (
-		<div>
-			<h4> {username} </h4>
-			<h4> {body} </h4>
+		<div className="full-comment">
+			<h4 className="comment-name"> {username} </h4>
+			<h4 className="comment-body"> {body} </h4>
 		</div>
 	);
 }
