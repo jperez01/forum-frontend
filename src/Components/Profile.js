@@ -34,21 +34,23 @@ const Profile = () => {
 	});
 
 	return (
-		<div>
-			<div className="profile">
-			<img className="profile-pic" src="https://i.ibb.co/f4Y7XDt/Profile-Pic.jpg" alt="Profile-Pic" border="0"/>
-				<div className="profile-info">
-					<h4 className="profile-username"> {username} </h4>
-					<h4 className="profile-email"> {email} </h4>
-					<h4 className="profile-password"> {password} </h4>
+		<div className="background">
+			<div className="white-box">
+				<div className="profile">
+					<img className="profile-pic" src="https://i.ibb.co/f4Y7XDt/Profile-Pic.jpg" alt="Profile-Pic" border="0"/>
+					<div className="profile-info">
+						<h4 className="profile-username"> {username} </h4>
+						<h4 className="profile-email"> {email} </h4>
+						<h4 className="profile-password"> {password} </h4>
+					</div>
 				</div>
-			</div>
-			<div className="posts-list">
-			<h4 className="posts-title"> Posts </h4>
-			{
-				posts.map(post => (
-				<SingularPost key={post.title} data={post}/>))
-			}
+				<div className="posts-list">
+					<h4 className="posts-title"> Posts </h4>
+					{
+						posts.map(post => (
+						<SingularPost key={post.title} data={post}/>))
+					}
+				</div>
 			</div>
 		</div>
 	);

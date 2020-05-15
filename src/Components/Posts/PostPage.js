@@ -23,18 +23,19 @@ const PostPage = () => {
 			TimeAgo.addLocale(en);
 			const time = new TimeAgo('en-US');
 			const parsed = queryString.parse(window.location.search);
-			fetch(`http://localhost:5000/posts/${parsed.author}/${parsed.title}`, {
+			fetch(`http://localhost:5000/posts/${parsed.author}/${parsed.id}`, {
 				method: "GET",
 				headers: {"Content-Type": "application/json"}
 			}).then(res => res.json())
 			.then(data => {
+				console.log(data);
 				setAuthor(data[0].author);
 				setTitle(data[0].title);
 				setBody(data[0].body);
 				setLikes(data[0].likes);
 				const dateTime = new Date(Date.parse(data[0].date));
 				setDate(time.format(dateTime));
-				fetch(`http://localhost:5000/comments/${data[0].title}/${data[0].author}`, {
+				fetch(`http://localhost:5000/comments/${data[0].post_id}/${data[0].author}`, {
 					method: "GET",
 					headers: {"Content-Type": "application/json"}
 				}).then(res => res.json())

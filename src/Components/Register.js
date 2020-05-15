@@ -26,33 +26,37 @@ const Register = () => {
 		return '/login';
 	}
 	return (
-		<Fragment>
-			<h1 className="text-center mt-5"> Register </h1>
-			<form>
-				<h3> Email </h3>
-				<input 
-				onChange={event => setEmail(event.target.value)}
-				type="text"
-				className="form-control" />
-				<h3> Username </h3>
-				<input 
-				onChange={event => setUsername(event.target.value)}
-				type="text"
-				className="form-control" />
-				<h3> Password </h3>
-				<input 
-				onChange={event => setPassword(event.target.value)}
-				type="text"
-				className="form-control" />
-				<div
-				onClick={onSubmit}>
-					<NavLink
-					to={changeRoute} > 
-						Submit 
-					</NavLink>
-				</div>
-			</form>
-		</Fragment>
+		<div className="background">
+			<div className="createpost">
+				<h1 className="page-title"> Register </h1>
+				<form>
+					<h3 className="input-header"> Email </h3>
+					<input 
+					onChange={event => setEmail(event.target.value)}
+					type="text"
+					className="login-input" />
+					<h3 className="input-header"> Username </h3>
+					<input 
+					onChange={event => setUsername(event.target.value)}
+					type="text"
+					className="login-input" />
+					<h3 className="input-header"> Password </h3>
+					<input 
+					onChange={event => setPassword(event.target.value)}
+					type="text"
+					className="login-input" />
+					<div
+					onClick={onSubmit}>
+						<NavLink
+						style={{'text-decoration': 'none'}}
+						className="like"
+						to={changeRoute} > 
+							Submit 
+						</NavLink>
+					</div>
+				</form>
+			</div>
+		</div>
 	);
 };
 

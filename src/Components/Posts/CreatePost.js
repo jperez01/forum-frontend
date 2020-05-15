@@ -43,7 +43,7 @@ const CreatePost = () => {
 	return (
 		<div className="background">
 			<div className="createpost">
-				<h4 className="create-title"> Create a Post </h4>
+				<h4 className="page-title"> Create a Post </h4>
 				{ warning &&
 					<a className="warning"> You must put a title and body </a>
 				}
@@ -58,7 +58,7 @@ const CreatePost = () => {
 				{submitted
 					? <Redirect to={`/posts/?author=${username}&title=${title}`}/>
 					: <a
-						className="createpost-button"
+						className="like"
 						onClick={submitPost}> Submit </a>}
 			</div>
 		</div>

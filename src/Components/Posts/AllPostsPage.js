@@ -18,11 +18,15 @@ const AllPostsPage = () => {
 	});
 
 	return (
-		<div className="posts-list">
-			<h5 className="posts-title"> Posts </h5>
-			{posts.map(post => (
-				<SingularPost key={post.author + post.title} data={post}/>
-			))}
+		<div className="background">
+			<div className="white-box">
+				<div className="posts-list">
+					<h5 className="posts-title"> Posts </h5>
+					{posts.map(post => (
+						<SingularPost key={post.author + post.title} data={post}/>
+					))}
+				</div>
+			</div>
 		</div>
 	);
 }
