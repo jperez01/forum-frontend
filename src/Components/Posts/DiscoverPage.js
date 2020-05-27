@@ -12,7 +12,7 @@ const DiscoverPage = () => {
 
 	useEffect(() => {
 		if (posts.length === 0) {
-			fetch("http://localhost:5000/posts", {
+			fetch("https://forum-database232.herokuapp.com/posts", {
 			method: "GET",
 			headers: {"Content-Type": "application/json"}
 		}).then(res => res.json())

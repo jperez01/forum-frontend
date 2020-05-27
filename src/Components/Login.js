@@ -18,7 +18,7 @@ const Login = () => {
 
 	function onSubmit(e) {
 		e.preventDefault();
-		fetch(`http://localhost:5000/users/${username}/${password}`, {
+		fetch(`https://forum-database232.herokuapp.com/users/${username}/${password}`, {
 			method: "GET",
 			headers: {"Content-Type": "application/json"}
 		}).then(res => res.json())

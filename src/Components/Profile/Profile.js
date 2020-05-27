@@ -11,6 +11,7 @@ const Profile = () => {
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [redirect, setRedirect] = useState(false);
 	const [posts, setPosts] = useState([]);
 
 	const login = useSelector(state => {
@@ -22,11 +23,15 @@ const Profile = () => {
 	});
 
 	useEffect(() => {
+		if (typeof username === "undefined") {
+			setRedirect(!redirect);
+			console.log(redirect);
+		}
 		if (username.localeCompare("") === 0) {
 			setEmail(login.email);
 			setUsername(login.username);
 			setPassword(login.password);
-			fetch(`http://localhost:5000/posts/${username}`, {
+			fetch(`https://forum-database232.herokuapp.com/posts/${username}`, {
 				method: 'GET',
 				headers: {'Content-Type': 'application/json'}
 			}).then(res => res.json())
@@ -38,6 +43,7 @@ const Profile = () => {
 
 	return (
 		<div className="white-box">
+		{ redirect && <Redirect to='/'/> }
 			<div className="profile">
 				<img className="profile-pic" src="https://i.ibb.co/f4Y7XDt/Profile-Pic.jpg" alt="Profile-Pic" border="0"/>
 				<div className="profile-info">

@@ -26,7 +26,7 @@ const Settings = () => {
 				password: login.password,
 				email: login.email
 			};
-			fetch(`http://localhost:5000/users/username/${username}`, {
+			fetch(`https://forum-database232.herokuapp.com/users/username/${username}`, {
 				method: "PUT",
 				headers: {"Content-Type": "application/json"},
 				body: JSON.stringify(body)
@@ -48,7 +48,7 @@ const Settings = () => {
 				username: login.username,
 				email: login.email
 			};
-			fetch(`http://localhost:5000/users/password/${password}`, {
+			fetch(`https://forum-database232.herokuapp.com/users/password/${password}`, {
 				method: "PUT",
 				headers: {"Content-Type": "application/json"},
 				body: JSON.stringify(body)

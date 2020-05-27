@@ -9,7 +9,7 @@ const AllUsersList = () => {
 
 	useEffect(() => {
 		if (users.length === 0) {
-			fetch("http://localhost:5000/users", {
+			fetch("https://forum-database232.herokuapp.com/users", {
 				method: "GET",
 				headers: {"Content-Type": "application/json"}
 			}).then(res => res.json())

@@ -31,7 +31,7 @@ const CreatePost = () => {
 				date: time,
 				likes: 0
 			};
-			fetch(`http://localhost:5000/posts/create`, {
+			fetch(`https://forum-database232.herokuapp.com/posts/create`, {
 				method: "POST",
 				headers: {"Content-Type": "application/json"},
 				body: JSON.stringify(bodyText)

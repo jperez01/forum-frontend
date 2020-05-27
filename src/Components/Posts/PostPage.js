@@ -31,7 +31,7 @@ const PostPage = () => {
 			TimeAgo.addLocale(en);
 			const time = new TimeAgo('en-US');
 			const parsed = queryString.parse(window.location.search);
-			fetch(`http://localhost:5000/posts/${parsed.author}/${parsed.id}`, {
+			fetch(`https://forum-database232.herokuapp.com/posts/${parsed.author}/${parsed.id}`, {
 				method: "GET",
 				headers: {"Content-Type": "application/json"}
 			}).then(res => res.json())
@@ -42,7 +42,7 @@ const PostPage = () => {
 				setLikes(data[0].likes);
 				const dateTime = new Date(Date.parse(data[0].date));
 				setDate(time.format(dateTime));
-				fetch(`http://localhost:5000/comments/${data[0].post_id}/${data[0].author}`, {
+				fetch(`https://forum-database232.herokuapp.com/comments/${data[0].post_id}/${data[0].author}`, {
 					method: "GET",
 					headers: {"Content-Type": "application/json"}
 				}).then(res => res.json())
@@ -61,7 +61,7 @@ const PostPage = () => {
 				post_author: author,
 				body: comment
 			}
-			fetch('http://localhost:5000/comments/create', {
+			fetch('https://forum-database232.herokuapp.com/comments/create', {
 				method: 'POST',
 				headers: {'Content-Type': 'application/json'},
 				body: JSON.stringify(body)
@@ -74,7 +74,7 @@ const PostPage = () => {
 
 	function submitLike() {
 		const amount = parseInt(likes) + 1;
-		fetch(`http://localhost:5000/posts/${author}/${title}/${amount}`, {
+		fetch(`https://forum-database232.herokuapp.com/posts/${author}/${title}/${amount}`, {
 			method: 'PUT',
 			headers: {'Content-Type': 'application/json'}
 		});
@@ -83,7 +83,7 @@ const PostPage = () => {
 
 	function submitDislike() {
 		const amount = likes - 1;
-		fetch(`http://localhost:5000/posts/${author}/${title}/${amount}`, {
+		fetch(`https://forum-database232.herokuapp.com/posts/${author}/${title}/${amount}`, {
 			method: 'PUT',
 			headers: {'Content-Type': 'application/json'}
 		});
