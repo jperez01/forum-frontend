@@ -63,7 +63,7 @@ const CreatePost = () => {
 				onChange={event => setBody(event.target.value)}
 				placeholder="Text"/>
 			{submitted
-				? <Redirect to={`/posts/?author=${username}&title=${title}`}/>
+				? <Redirect to={`/discover`}/>
 				: <a
 					className="settings-button"
 					style={{ 'align-self': 'center' }}
