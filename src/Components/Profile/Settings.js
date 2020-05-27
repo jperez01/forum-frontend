@@ -3,10 +3,15 @@ import { Button } from 'react-bootstrap';
 import { login as loginTool } from '../../Redux';
 import { useSelector, useDispatch } from 'react-redux';
 
+/**
+ * Page to change the username and password of your account
+ */
 const Settings = () => {
 	const [password, setPassword] = useState("");
 	const [username, setUsername] = useState("");
 	const dispatch = useDispatch();
+
+	//Uses local redux storage to get the info of the current user
 	const login = useSelector(state => {
 		return {
 			username: state.username,
@@ -65,13 +70,13 @@ const Settings = () => {
 				<h4 className="settings-title"> Change Username</h4>
 				<p className="settings-body"> Username must be different from old one </p>
 				<input className="settings-input" placeholder="New Username" onChange={event => setUsername(event.target.value)}/>
-				<Button onClick={changeUsername}> Submit </Button>
+				<Button className="settings-button" onClick={changeUsername}> Submit </Button>
 			</div>
 			<div>
 				<h4 className="settings-title"> Change Password </h4>
 				<p className="settings-body"> Password must be different from old one </p>
 				<input className="settings-input" placeholder="New Password" onChange={event => setPassword(event.target.value)}/>
-				<Button onClick={changePassword}> Submit </Button>
+				<Button className="settings-button" onClick={changePassword}> Submit </Button>
 			</div>
 		</div>
 		);

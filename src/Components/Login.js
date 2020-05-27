@@ -1,36 +1,61 @@
 import React, {Fragment, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import {login} from '../Redux.js';
 import {useDispatch} from 'react-redux';
 import '../Root.css';
 
+/**
+ * Component that acts as a login page to access the forum
+ */
 const Login = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [submitted, setSubmitted] = useState(false);
-	const [warning, setWarning] = useState(false);
+	const [passwordWarning, setPasWarning] = useState(false);
+	const [usernameWarning, setUserWarning] = useState(false);
+
 	const dispatch = useDispatch();
 
 	function onSubmit(e) {
 		e.preventDefault();
-		if (username.localeCompare("") === 0 || password.localeCompare("") === 0) {
-			setWarning(!warning);
+		fetch(`http://localhost:5000/users/${username}/${password}`, {
+			method: "GET",
+			headers: {"Content-Type": "application/json"}
+		}).then(res => res.json())
+		.then(data => {
+			if (data.length === 0) {
+				console.log("Authentication Failed");
+			} else {
+				addLoginInfo(data[0]);
+				setSubmitted(!submitted);
+			}
+		});
+	}
+
+	//Checks if username and password boxes have been filled in
+	function checkBoxes(e) {
+		if (username.localeCompare("") === 0) {
+			setUserWarning(true);
+			document.getElementById('username').style.border = '1px solid red';
 		} else {
-			fetch(`http://localhost:5000/users/${username}/${password}`, {
-				method: "GET",
-				headers: {"Content-Type": "application/json"}
-			}).then(res => res.json())
-			.then(data => {
-				if (data.length === 0) {
-					console.log("Authentication Failed");
-				} else {
-					addLoginInfo(data[0]);
-					setSubmitted(!submitted);
-				}
-			});
+			setUserWarning(false);
+			document.getElementById('username').style.border = '';
+		}
+
+		if (password.localeCompare("") === 0) {
+			setPasWarning(true);
+			document.getElementById('password').style.border = '1px solid red';
+		} else {
+			setPasWarning(false);
+			document.getElementById('password').style.border = '';
+		}
+
+		if (!passwordWarning && !usernameWarning) {
+			onSubmit(e);
 		}
 	}
 
+	//Adds login data to local Redux storage for personalization on the website
 	function addLoginInfo(data) {
 		let state = {
 				username: data.username,
@@ -42,29 +67,34 @@ const Login = () => {
 	}
 
 	return (
-		<div className="background">
-			<div className="createpost">
-			<h4 className="page-title"> Login </h4>
-			{ warning && <h4 className="warning"> username or password box is empty </h4> }
-				<h3 className="input-header"> Username </h3>
-				<input 
-				className="login-input"
-				onChange={event => setUsername(event.target.value)}
-				type="text" />
-				<h3 className="input-header"> Password </h3>
-				<input 
-				className="login-input"
-				onChange={event => setPassword(event.target.value)}
-				type="text" />
-				{ submitted ? 
-					<Redirect to='/profile'/>
-					:
-					<a className="like" onClick={onSubmit}>
-						Submit
-					</a>
-				}
-			</div>
-		</div>);
+			<div className="login">
+				<h4 className="page-title"> Login </h4>
+					<input
+						id="username"
+						className="login-input"
+						onChange={event => setUsername(event.target.value)}
+						placeholder="Username"
+						style={{ 'border': ''}}
+						type="text" />
+					{ usernameWarning && <h4 className="warning"> username box is empty </h4> }
+					<input 
+						id="password"
+						className="login-input"
+						onChange={event => setPassword(event.target.value)}
+						placeholder="Password"
+						style={{ 'border': ''}}
+						type="text" />
+					{ passwordWarning && <h4 className="warning"> password box is empty </h4> }
+					{ submitted ? 
+						<Redirect to='/profile'/>
+						:
+						<a className="signup-login-button" onClick={checkBoxes}>
+							Login
+						</a>
+					}
+				<h4 className="text"> Don't have an Account? </h4>
+				<NavLink className="text" to="/register"> Register here </NavLink>
+			</div>);
 }
 
 export default Login;

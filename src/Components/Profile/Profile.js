@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import SingularPost from './Posts/SingularPost';
+import SingularPost from '../Posts/SingularPost';
 
+/**
+ * Component to show profile page with info and posts
+ */
 const Profile = () => {
 
 	const [email, setEmail] = useState("");
@@ -34,23 +37,21 @@ const Profile = () => {
 	});
 
 	return (
-		<div className="background">
-			<div className="white-box">
-				<div className="profile">
-					<img className="profile-pic" src="https://i.ibb.co/f4Y7XDt/Profile-Pic.jpg" alt="Profile-Pic" border="0"/>
-					<div className="profile-info">
-						<h4 className="profile-username"> {username} </h4>
-						<h4 className="profile-email"> {email} </h4>
-						<h4 className="profile-password"> {password} </h4>
-					</div>
+		<div className="white-box">
+			<div className="profile">
+				<img className="profile-pic" src="https://i.ibb.co/f4Y7XDt/Profile-Pic.jpg" alt="Profile-Pic" border="0"/>
+				<div className="profile-info">
+					<h4 className="profile-username"> {username} </h4>
+					<h4 className="profile-email"> {email} </h4>
 				</div>
-				<div className="posts-list">
-					<h4 className="posts-title"> Posts </h4>
-					{
-						posts.map(post => (
-						<SingularPost key={post.title} data={post}/>))
-					}
-				</div>
+			</div>
+			<div className="posts-list"
+				style={{ margin: '0px' }}>
+				<h4 className="posts-title"> Posts </h4>
+				{
+					posts.map(post => (
+					<SingularPost key={post.title} data={post}/>))
+				}
 			</div>
 		</div>
 	);

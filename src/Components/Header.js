@@ -5,6 +5,9 @@ import { Navbar, Dropdown } from 'react-bootstrap';
 import { NavLink, Redirect } from 'react-router-dom';
 import '../Root.css';
 
+/**
+ * Component used for the header with various functions
+ */
 const Header = () => {
 	const [username, setUsername] = useState("");
 	const [search, setSearch] = useState("");
@@ -23,6 +26,7 @@ const Header = () => {
 		}
 	})
 
+	//Sets loggedIn status to toggle different behavior
 	useEffect(() => {
 		setUsername(login.username);
 		setLoggedIn(login.loggedIn);
@@ -40,67 +44,50 @@ const Header = () => {
 		setlogvis(false);
 		setShown(!shown);
 	}
+
 	return (
-		<Navbar bg="light" expand="lg" className="flex-box">
-  			<Navbar.Brand className="logo">Forum</Navbar.Brand>
-  			<div className="flex-box-left">
-  				<input type="search" className="form-control" placeholder="Search"></input>
-  			</div>
+		<div className="header">
+  			<h4 className="header-title"> Forum </h4>
   			{
   				loggedIn
   				? 
-  				<div className="flex-box-right">
-  					<NavLink className="header-button" to="/createPost">
-		  				Create Post
-		  			</NavLink>
-		  			<NavLink className="header-button" to="/allposts">
-		  				Posts
-		  			</NavLink>
-	  				<div className="dropdown">
-	  					<div className="flex-box">
-	  						<button onClick={() => setShown(!shown)} className="dropdown-button"> {username}
-	  						{shown
-	  							? <img src="https://i.ibb.co/pLZrgCz/dropdown-arrow2-512.png" alt="Dropdown-Down" height="23px" width="23px" className="dropdown-pic" />
-	  							: <img src="https://i.ibb.co/qk9Q09h/Dropdown-Up.png" alt="Dropdown-Up" height="23px" width="23px" className="dropdown-pic" />
-	  						}
-							</button>
+				  <div className="flex-box-right">
+						<input className="search-box" type="search" placeholder="Search..."></input>
+					<div className="header">
+						<NavLink
+							className="header-link"
+							to="/discover"> Discover </NavLink>
+						<NavLink className="header-button" to="/createPost">
+							Create Post
+						</NavLink>
+						<div className="dropdown">
+							<div className="header-profile">
+								<button onClick={() => setShown(!shown)} className="dropdown-button">
+								<img className="profile-icon" src="https://i.ibb.co/44VdKx6/Profile-Icon-V3.png" alt="Profile-Icon-V2" border="0"/>
+								{shown
+									? <img src="https://i.ibb.co/pLZrgCz/dropdown-arrow2-512.png" alt="Dropdown-Down" height="15px" width="15px" className="dropdown-pic" />
+									: <img src="https://i.ibb.co/qk9Q09h/Dropdown-Up.png" alt="Dropdown-Up" height="15px" width="15px" className="dropdown-pic" />
+								}
+								</button>
+							</div>
+							<div className="dropdown-content" style={{visibility: shown ? "visible" : "hidden"}}>
+								<NavLink className="dropdown-element" to="/profile" style={{visibility: shown ? "visible" : "hidden"}} > 
+								Profile </NavLink>
+								<NavLink className="dropdown-element" to="/settings" style={{visibility: shown ? "visible" : "hidden"}}> 
+								Settings </NavLink>
+								<a className="dropdown-logout" style={{visibility: shown ? "visible" : "hidden"}} onClick={submitLogout}>
+								Log Out </a>
+							</div>
 						</div>
-						<div className="dropdown-content" style={{visibility: shown ? "visible" : "hidden"}}>
-	  						<NavLink className="dropdown-element" to="/profile" style={{visibility: shown ? "visible" : "hidden"}} onMouseOver={event => setprofvis(true)} onMouseOut={event => setprofvis(false)}> 
-							{
-  								profilevisibility
-  								? <img className="dropdown-picture" src="https://i.ibb.co/ZBQnHLv/Profile-Hover.png" alt="Profile-Hover" border="0" />
-  								: <img className="dropdown-picture" src="https://i.ibb.co/wdMzbgy/Profile-Normal.png" alt="Profile-Normal" border="0" />
-  							}
-	  						Profile </NavLink>
-  							<NavLink className="dropdown-element" to="/settings" style={{visibility: shown ? "visible" : "hidden"}} onMouseOver={event => setsettvis(true)} onMouseOut={event => setsettvis(false)}> 
-  							{
-  								settingsvisibility
-  								? <img className="dropdown-picture" src="https://i.ibb.co/M1CvybQ/Settings-Hover.png" alt="Settings-Hover" border="0"/>
-  								: <img className="dropdown-picture" src="https://i.ibb.co/R6MrKbw/Settings-Normal.png" alt="Settings-Normal" border="0"/>
-  							}
-  							Settings </NavLink>
-  							<a className="dropdown-logout" style={{visibility: shown ? "visible" : "hidden"}} onMouseOver={event => setlogvis(true)} onMouseOut={event => setlogvis(false)} onClick={submitLogout}>
-  							{
-  								logoutvisibility
-  								? <img className="dropdown-picture" src="https://i.ibb.co/Rb7k3pG/Logout-Hover.png" alt="Logout-Hover" border="0"/>
-  								: <img className="dropdown-picture" src="https://i.ibb.co/hBVQFRn/Logout-Normal.png" alt="Logout-Normal" border="0"/>
-  							}
-  							Log Out </a>
-  						</div>
-	  				</div>
-	  			</div>
+					</div>
+				</div>
   				: <div className="flex-box-right">
-  					<NavLink className="header-button" to="/login"> Login </NavLink>
-  					<NavLink className="header-button" to="/register"> Register </NavLink>
+  					<NavLink className="header-link" to="/login"> Login </NavLink>
+  					<NavLink className="header-link" to="/register"> Register </NavLink>
   				</div>
   			}
-  			{ loggedOut ?
-  				<Redirect to="/" />
-  				: <div>
-  				</div>
-  			}
-		</Navbar>)
+  			{ loggedOut && <Redirect to="/" /> }
+		</div>)
 }
 
 export default Header;

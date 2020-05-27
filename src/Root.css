@@ -2,39 +2,157 @@
 
 }
 
+.discover-page {
+	margin: 0vw 10vw;
+	margin-top: 20px;
+	display: flex;
+	flex-direction: row;
+}
+
+/**
+	CSS code for header bar on top of the window
+*/
+.header {
+	display: flex;
+	flex-direction: row;
+	padding: 0px 10px 0px 10px;
+	align-items: center;
+	height: 55px;
+}
+
+.header-title {
+	font-family: 'Rubik Medium';
+	font-size: 16px;
+	line-height: 22.5px;
+	margin: 0px 10px;
+	height: 24px;
+}
+
+.header-profile {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.header-link {
+	margin: 0px 10px ;
+	font-family: 'Rubik Medium';
+	font-size: 16px;
+	color: #888;
+}
+
+.header-link:hover {
+	color: black;
+	text-decoration: none;
+}
+
+
+/**
+	CSS code for home screen when first arriving at the website
+*/
+.home-body {
+	font-family: 'Rubik';
+	font-size: 18px;
+}
+
+.home-list-element {
+	font-family: 'Rubik';
+	font-size: 18px;
+	margin: 10px 0px;
+}
+
+.home-buttons {
+	display: flex;
+	flex-direction: row;
+	margin-top: 10px;
+}
+
+.home-link {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.home-page {
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+	margin-left: 25vw;
+	margin-right: 25vw;
+}
+.home-title {
+	font-family: 'Rubik Medium';
+	font-size: 48px;
+}
+
+.home-title-small {
+	font-family: 'Rubik Medium';
+	font-size: 32px;
+}
+
+.search-box {
+	width: 100%;
+	background: #f3f3f4;
+	border-style: solid;
+	border-color: #f3f3f4;
+	border-width: .5px;
+	border-radius: 50px;
+	padding: 4px 20px 4px 20px;
+	outline: none !important;
+	min-width: 200px;
+	align-self: center;
+	justify-self: flex-start;
+	transition: border-color .2s, background-color .2s;
+	margin-left: 20px;
+}
+
+.search-box:focus {
+	border-color: black;
+	background-color: white;
+}
+
 .warning {
 	margin-bottom: 10px;
-	font-family: 'IBM Plex Sans';
-	font-size: 10px;
+	font-family: 'Rubik';
+	font-size: 14px;
 	color: red !important;
 }
 
-.background {
-	background-color: #f6f7f8;
-	padding: 10px;
-	height: 100vw;
-}
-
+/**
+	CSS code for comment component
+*/
 .comment-body {
-	font-family: 'IBM Plex Sans';
+	font-family: 'Rubik';
 	font-size: 15px;
 }
 
 .comment-name {
-	font-family: 'IBM Plex Sans Semi-Bold';
+	font-family: 'Rubik Medium';
 	font-size: 15px;
 }
 
 .comment-input {
 	outline: none !important;
+	border: 1px solid #e5e5e5;
 	border-radius: 5px;
 	margin-bottom: 10px !important;
 	height: 75px;
+	background-color: #f9f9f9;
+	transition: border-color .2s, background-color .2s;
+}
+
+.comment-input:focus {
+	background-color: white;
+	border-color: black;
 }
 
 .full-comment {
 	margin-top: 5px;
 }
+
+/**
+	CSS code for createPost component
+*/
 .create-title {
 	font-family: 'IBM Plex Sans Semi-Bold';
 }
@@ -43,10 +161,9 @@
 	background-color: white;
 	padding: 10px;
 	margin-top: 10px;
-	border-style: solid;
+	border-style: none;
 	border-radius: 5px;
 	border-width: 1px;
-	border-color: #edeff1;
 	display: flex;
 	flex-direction: column;
 	margin-left: 25vw;
@@ -54,32 +171,35 @@
 }
 
 .createpost-title {
-	font-family: 'IBM Plex Sans';
 	outline: none !important;
+	border: 1px solid #e5e5e5;
 	border-radius: 5px;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #edeff1;
-	margin-bottom: 10px;
+	margin-bottom: 10px !important;
+	padding: 10px;
+	height: 35px;
+	background-color: #f9f9f9;
+	transition: border-color .2s, background-color .2s;
 }
 
-.createpost-title:hover {
+.createpost-title:focus {
 	border-color: black;
+	background-color: white;
 }
 
 .createpost-body {
-	font-family: 'IBM Plex Sans';
 	outline: none !important;
-	text-align: left;
-	height: 100px;
+	border: 1px solid #e5e5e5;
 	border-radius: 5px;
-	border-width: 1px;
-	border-color: #edeff1;
-	margin-bottom: 10px;
+	padding: 10px;
+	margin-bottom: 10px !important;
+	height: 100px;
+	background-color: #f9f9f9;
+	transition: border-color .2s, background-color .2s;
 }
 
-.createpost-body:hover {
+.createpost-body:focus {
 	border-color: black;
+	background-color: white;
 }
 
 .createpost-button {
@@ -97,10 +217,14 @@
 	filter: opacity(50%);
 }
 
+/**
+	CSS code for dropdown in header for profile icon
+*/
 .dropdown {
 	display: flex;
 	flex-direction: column;
 	height: 38px;
+	width: 62px;
 }
 
 .dropdown-button {
@@ -130,6 +254,9 @@
 }
 
 .dropdown-content {
+	position: relative;
+	right: 28px;
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -137,20 +264,18 @@
 	border-color: white;
 	border-radius: 5px;
 	border-width: 1px;
-	background: white;
+	background: #1e1e1e;
 	text-align: center;
 	line-height: 36px;
-
-	font-size: 17px;
-	font-family: 'IBM Plex Sans', 'Montserrat';
 	color: black;
-	height: 38px;
-	margin-left: 10px;
+	width: 100px;
+	padding: 10px 0px;
+	margin-top: 5px;
 }
 .dropdown-pic {
 	margin-left: 5px;
-	height: 23px;
-	width: 23px;
+	height: 15px;
+	width: 15px;
 }
 
 .dropdown-picture {
@@ -160,49 +285,39 @@
 	width: 23px;
 }
 .dropdown-element {
-	display: flex;
-	justify-content: flex-start;
 	align-items: center;
 	padding-right: 1px;
 	padding-left: 1px;
 	font-size: 17px;
-	font-family: 'IBM Plex Sans', 'Montserrat';
-	color: black;
+	font-family: 'Rubik';
+	color: white !important;
 	width: 100%;
 }
 
 .dropdown-element:hover {
-	background-color: blue;
+	background-color: #3f3f3f;
 	text-decoration: none;
-	color: white;
 }
 
 .dropdown-logout {
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
 	padding-right: 1px;
 	padding-left: 1px;
 	font-size: 17px;
-	font-family: 'IBM Plex Sans', 'Montserrat';
-	color: black;
+	font-family: 'Rubik';
+	color: white !important;
 	width: 100%;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
 
 .dropdown-logout:hover {
-	background-color: blue;
+	background-color: #373737;
 	cursor: pointer;
-	color: white !important;
 }
 
-.input-header {
-	margin-bottom: 10px;
-	font-family: 'IBM Plex Sans Semi-Bold';
-	font-size: 20px;
-}
-
+/**
+	CSS code for different flex box combinations
+*/
 .flex-box {
 	height: 56px;
 	display: flex;
@@ -217,122 +332,186 @@
 	justify-content: flex-start;
 }
 .flex-box-right {
-	width: 55%;
+	width: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
+	align-items: flex-end;
 }
 
-.logo {
-	width: 10%;
+.flex-box-column {
 	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
+	flex-direction: column;
 }
+
+/**
+	CSS code for login, register, and create post buttons
+*/
 .header-button {
-	border-style: solid;
-	border-color: white;
+	border-style: none;
 	border-radius: 5px;
-	border-width: 1px;
-	background: white;
+	background: #f2f4ff;
+	width: 115px;
+	font-size: 16px;
+	font-family: 'Rubik Medium';
 	text-align: center;
-	line-height: 36px;
-
-	font-size: 17px;
-	font-family: 'IBM Plex Sans Semi-Bold', 'IBM Plex Sans', 'Montserrat';
-	color: black;
-
-	width: 100px;
-	height: 38px;
-	margin-left: 10px;
+	color: #7e84ff;
+	padding: 6px 10px 6px 10px;
+	transition: color .15s;
 }
 
 .header-button:hover {
-	border-color: #edeff1;
-	color: black;
 	text-decoration: none;
+	color: #5a44ff;
 }
 
-.form-control {
-    display: block;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    width: 100% !important;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-
-.form-control:active {
-	outline: none !important;
+/**
+	CSS code for login and register page
+*/
+.login {
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	margin-left: 25vw;
+	margin-right: 25vw;
+	align-items: center;
 }
 
 .login-input {
-	width: 200px !important;
+	width: 360px !important;
 	height: 35px;
 	border-radius: 5px;
 	border-style: solid;
 	border-width: 1px;
 	margin-bottom: 10px;
-	border-color: #ced4da;
+	background-color: #f9f9f9;
+	border-color: #e5e5e5;
+	padding: 8px 15px;
+	font-family: 'Rubik';
+	font-size: 15px;
+	transition: border-color .2s, background-color .2s;
 }
 
-.posts-list {
+.login-input:focus {
+	outline: none;
+	background-color: white;
+	border-color: black;
+}
 
+.signup-login-button {
+	border-radius: 5px;
+	border-style: none;
+	background-color: #5a44ff;
+	width: 360px;
+	text-align: center;
+	font-family: 'Rubik';
+	font-size: 16px;
+	color: white !important;
+	padding: 5px;
+	cursor: pointer;
+	margin: 5px;
+}
+
+.signup-login-button:hover {
+	filter: opacity(70%);
+}
+
+.signup-login-button:active {
+	filter: opacity(86%);
+}
+
+.likes {
+	font-family: 'Rubik';
+	color: #888;
+	font-size: 12px;
+	margin-right: 10px;
+}
+
+.mini-username {
+	font-family: 'Rubik Medium';
+	font-size: 16px;
+}
+
+/**
+	CSS code for list of posts
+*/
+.posts-list {
 	display: flex;
 	flex-direction: column;
 	align-content: center;
+	margin-left: 25vw;
+	margin-right: 25vw;
+}
+
+.posts-list-2 {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	margin-right: 100px;
 }
 
 .posts-title {
-	border-top-right-radius: 5px;
-	border-top-left-radius: 5px;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #e8e8e8;
-	margin-top: 10px;
-	margin-bottom: 0px;
-	padding-left: 10px;
-	background-color: #f9f9f9;
+	font-family: 'Rubik Medium';
 	font-size: 20px;
-	font-family: 'IBM Plex Sans Semi-Bold';
+	margin: 20px 0px 10px 10px;
 }
 
 .post-title {
-	font-family: 'IBM Plex Sans Semi-Bold';
+	font-family: 'Rubik Medium';
 	font-size: 20px;
+	cursor: pointer;
+}
+
+.post-title:hover {
+	text-decoration: underline;
+}
+
+.post-page-title {
+	font-family: 'Rubik Medium';
+	font-size: 32px;
 }
 
 .post-body {
-	font-family: 'IBM Plex Sans';
-	font-size: 15px;
+	font-family: 'Rubik';
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-height: 64px;
+	font-size: 16px;
 }
 
 .post-author {
-	font-family: 'IBM Plex Sans';
+	font-family: 'Rubik';
+	color: #888;
 	font-size: 10px;
 }
 
-.profile {
-	margin-top: 10px;
+.post-info {
 	display: flex;
 	flex-direction: row;
-	height: 100px;
 	align-items: center;
-	background-color: white;
 }
 
-.profile-info {
-	margin-left: 10px;
-	display: flex;
-	flex-direction: column;
+.singular-post {
+	padding: 5px 10px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #f9f9f9;
+}
+
+/** 
+	CSS code for specific post page
+*/
+.post-page-author {
+	font-family: 'Rubik Medium';
+	font-size: 16px;
+	margin-right: 10px;
+}
+
+.post-page-date {
+	font-family: 'Rubik';
+	color: #888;
+	font-size: 12px;
+	margin-right: 10px;
 }
 
 .post-content {
@@ -349,8 +528,8 @@
 .like-box {
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-end;
-	margin: 10px;
+	justify-content: flex-start;
+	margin-bottom: 8px;
 	align-items: center;
 }
 
@@ -363,11 +542,9 @@
 }
 .like {
 	padding: 5px;
-	border-radius: 5px;
-	border-style: solid;
-	border-width: 1px;
 	border-color: #edeff1;
-	font-family: 'IBM Plex Sans';
+	font-family: 'Rubik';
+	font-size: 12px;
 	color: #999 !important;
 	transition: border-color .5s ease;
 	transition: color border-color .5s ease;
@@ -388,6 +565,31 @@
     margin: 1em 0;
     padding: 0;
 }
+
+/**
+	CSS code for profile page
+*/
+.profile {
+	margin-top: 10px;
+	display: flex;
+	flex-direction: row;
+	height: 100px;
+	align-items: center;
+	background-color: white;
+}
+
+.profile-icon {
+	border-radius: 3px;
+	width: 28x;
+	height: 28px;
+}
+
+.profile-info {
+	margin-left: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
 .profile-pic {
 	margin-left: 10px;
 	border-radius: 50px;
@@ -399,26 +601,27 @@
 }
 
 .profile-username {
-	font-family: 'IBM Plex Sans Semi-Bold';
-	font-size: 20px;
+	font-family: 'Rubik Medium';
+	font-size: 32px;
 }
 
 .profile-email {
-	font-family: 'IBM Plex Sans';
+	font-family: 'Rubik';
+	color: #888;
 	font-size: 20px;
 }
 
 .profile-password {
-	font-family: 'IBM Plex Sans';
+	font-family: 'Rubik';
+	color: #888;
 	font-size: 20px;
 }
-.singular-post {
-	padding-left: 10px;
-	border-style: solid;
-	border-width: 1px;
-	border-color: #f9f9f9;
-}
 
+
+
+/**
+	CSS code for settings page
+*/
 .settings {
 	display: flex;
 	flex-direction: column;
@@ -427,7 +630,7 @@
 }
 
 .settings-title {
-	font-family: 'IBM Plex Sans';
+	font-family: 'Rubik Medium';
 	outline: none !important;
 	border-radius: 5px;
 	border-width: 1px;
@@ -437,7 +640,7 @@
 }
 
 .settings-body {
-	font-family: 'IBM Plex Sans';
+	font-family: 'Rubik';
 	outline: none !important;
 	border-radius: 5px;
 	border-width: 1px;
@@ -446,37 +649,94 @@
 }
 
 .settings-input {
+	width: 360px !important;
+	height: 35px;
 	border-radius: 5px;
 	border-style: solid;
-	border-color: #edeff1;
-	margin-right: 10px;
-}
-
-.submit {
-	border-style: solid;
-	background: none;
-	border-radius: 5px;
-	width: 100px !important;
-	align-self: center;
-	padding: 5px;
 	border-width: 1px;
-	border-color: #edeff1;
-	font-family: 'IBM Plex Sans';
-	color: #999 !important;
-	transition: border-color .5s ease;
-	transition: color border-color .5s ease;
-}
-
-.submit:hover {
-	border-color: #999;
-	color: #000 !important;
-	cursor: pointer;
-}
-
-.page-title {
-	font-size: 30px;
 	margin-bottom: 10px;
-	font-family: 'IBM Plex Sans Semi-Bold';
+	background-color: #f9f9f9;
+	border-color: #e5e5e5;
+	padding: 8px 15px;
+	margin-right: 10px;
+	font-family: 'Rubik';
+	font-size: 15px;
+	transition: border-color .2s, background-color .2s;
+}
+
+.settings-input:focus {
+	outline: none;
+	background-color: white;
+	border-color: black;
+}
+
+.settings-button {
+	border-radius: 5px;
+	border-style: none;
+	background-color: #5a44ff;
+	width: 100px;
+	text-align: center;
+	font-family: 'Rubik';
+	font-size: 16px;
+	color: white !important;
+	padding: 5px;
+	cursor: pointer;
+	margin: 5px;
+}
+
+.settings-button:hover {
+	filter: opacity(70%);
+}
+
+.settings-button:active {
+	filter: opacity(86%);
+}
+
+/**
+	CSS code for sorting buttons in discover page
+*/
+.sortTag {
+	font-family: 'Rubik Medium';
+	font-size: 16px;
+	color: #888;
+	text-align: center;
+	cursor: pointer;
+	margin: 10px;
+	padding: 5px 10px;
+	line-height: 30px;
+	border-radius: 20px;
+	background: none;
+}
+
+.sortTag:hover {
+	color: black !important;
+}
+
+/**
+	CSS code for users list in discover page
+*/
+.users-body {
+	font-family: 'Rubik';
+	color: #888;
+	font-size: 14px;
+}
+
+.users-list {
+	display: flex;
+	flex-direction: column;
+	width: 20vw;
+	margin-top: 5px;
+}
+
+.users-title {
+	font-family: 'Rubik Medium';
+	font-size: 24px;
+}
+
+.text {
+	margin: 5px;
+	font-family: 'Rubik';
+	font-size: 16px;
 }
 
 .white-box {
@@ -489,9 +749,12 @@
 	padding: 10px;
 	width: 50vw;
 }
-@font-face {
-	font-family: 'Open Sans Semi-Bold';
-	src: url('./Fonts/OpenSans-SemiBold.ttf');
+
+.page-title {
+	align-self: center;
+	font-size: 30px;
+	margin-bottom: 20px;
+	font-family: 'Rubik Medium';
 }
 
 @font-face {
@@ -512,4 +775,24 @@
 @font-face {
 	font-family: 'IBM Plex Sans Bold';
 	src: url('./Fonts/IBMPlexSans-Bold.ttf');
+}
+
+@font-face {
+	font-family: 'Rubik';
+	src: url('./Fonts/Rubik-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'Rubik Bold';
+	src: url('./Fonts/Rubik-Bold.ttf');
+}
+
+@font-face {
+	font-family: 'Rubik Black';
+	src: url('./Fonts/Rubik-Black.ttf');
+}
+
+@font-face {
+	font-family: 'Rubik Medium';
+	src: url('./Fonts/Rubik-Medium.ttf');
 }
